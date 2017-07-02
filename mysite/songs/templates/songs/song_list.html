@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'songs/js/songs.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  <h1 class="page-header">songs</h1>
+
+  <p>
+    <button type="button" class="btn btn-primary js-create-song" data-url="{% url 'song_create' %}">
+      <span class="glyphicon glyphicon-plus"></span>
+      New song
+    </button>
+  </p>
+
+  <table class="table" id="song-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Song</th>
+        <th>Artist</th>
+        <th>Type</th>
+        <th>Publication date</th>
+        <th>Length_secs</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% include 'songs/includes/partial_song_list.html' %}
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="modal-song">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

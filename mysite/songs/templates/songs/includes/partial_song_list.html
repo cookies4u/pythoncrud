@@ -1,0 +1,27 @@
+{% for song in songs %}
+  <tr>
+    <td>{{ song.id }}</td>
+    <td>{{ song.title }}</td>
+    <td>{{ song.artist }}</td>
+    <td>{{ song.get_song_type_display }}</td>
+    <td>{{ song.publication_date }}</td>
+    <td>{{ song.length_secs }}</td>
+    <td>{{ song.price }}</td>
+    <td style="width: 150px">
+      <button type="button"
+              class="btn btn-warning btn-sm js-update-song"
+              data-url="{% url 'song_update' song.id %}">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-song"
+              data-url="{% url 'song_delete' song.id %}">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+    </td>
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No song</td>
+  </tr>
+{% endfor %}
